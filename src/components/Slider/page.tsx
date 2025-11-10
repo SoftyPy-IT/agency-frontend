@@ -42,7 +42,7 @@ const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className="slider-container relative w-full -mt-20">
+    <div className="slider-container w-full">
       <Swiper
         effect="fade"
         speed={4000}
@@ -59,13 +59,13 @@ const Slider = () => {
         }}
         modules={[Autoplay, Pagination, EffectFade]}
         onSlideChange={(swiper) => setCurrentSlide(swiper.activeIndex)}
-        className="w-full h-[350px] lg:h-[700px]"
+        className="w-full h-[410px] lg:h-[900px]"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="relative w-full h-full">
               {/* Main image container */}
-              <div className="relative w-full h-full overflow-hidden">
+              <div className="relative w-full h-full ">
                 <Image
                   src={slide.img}
                   alt={`Slide ${index + 1}`}
@@ -76,9 +76,9 @@ const Slider = () => {
                 />
                 
                 {/* Left side blur overlay - only covers left portion */}
-                <div className="absolute left-0 top-0 w-1/3 h-full overflow-hidden">
+                <div className="absolute left-0 top-0 w-3/4 h-full overflow-hidden">
                   <div 
-                    className="w-full h-full backdrop-blur-md bg-white/5"
+                    className="w-full h-full backdrop-blur-4xl bg-black/90"
                     style={{
                       maskImage: 'linear-gradient(to right, black, transparent)',
                       WebkitMaskImage: 'linear-gradient(to right, black, transparent)'
@@ -87,13 +87,13 @@ const Slider = () => {
                 </div>
 
                 {/* Subtle shadow overlay */}
-                <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.1)]"></div>
+                <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.5)]"/>
               </div>
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white space-y-4 lg:space-y-10 lg:p-8 px-4">
                 <motion.h5
-                  className="text-lg lg:text-xl font-bold drop-shadow-lg"
+                  className="text-lg lg:text-xl font-bold drop-shadow-lg mt-0"
                   initial={{ y: 50, opacity: 0 }}
                   animate={{
                     y: currentSlide === index ? 0 : 50,
@@ -152,7 +152,7 @@ const Slider = () => {
                   }}
                 >
                   <Button                   
-                    className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg font-semibold shadow-lg"
+                    className="bg-white text-red-500 hover:bg-gray-200 px-8 py-6 text-lg font-semibold shadow-lg"
                   >
                     Read More
                   </Button>
